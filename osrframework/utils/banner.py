@@ -18,11 +18,11 @@
 ###############################################################################
 
 import textwrap
-import random
 
 import osrframework
 import osrframework.utils.general as general
 import osrframework.utils.fortunes as fortunes
+import secrets
 
 release = "OSRFramework " + osrframework.__version__
 
@@ -87,7 +87,7 @@ text = textwrap.dedent(
         general.colorize("♥", "ERROR BOLD"),
         general.colorize("Yaiza Rubio", "SUCCESS BOLD"),
         general.colorize("Félix Brezo", "SUCCESS BOLD"),
-        general.colorize(random.choice(fortunes.messages).center(80), "WARNING")
+        general.colorize(secrets.SystemRandom().choice(fortunes.messages).center(80), "WARNING")
     )
 )
 
