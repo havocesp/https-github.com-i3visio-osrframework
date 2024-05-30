@@ -19,13 +19,11 @@
 
 import argparse
 import json
-import os
 import re
 import time
 
-import requests
-
 import osrframework.utils.general as general
+from security import safe_requests
 
 
 def check_if_email_was_hacked(email=None, sleep_seconds=1):
@@ -47,8 +45,7 @@ def check_if_email_was_hacked(email=None, sleep_seconds=1):
     target_url = f"https://www.dehashed.com/search?query=\"{email}\""
 
     # Building API query
-    resp = requests.get(
-        target_url,
+    resp = safe_requests.get(target_url,
         verify=True
     )
 

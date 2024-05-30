@@ -21,9 +21,8 @@ from configparser import ConfigParser
 import os
 import random
 
-import requests
-
 import osrframework.utils.configuration as configuration
+from security import safe_requests
 
 
 class Browser():
@@ -125,8 +124,7 @@ class Browser():
 
         # Opening the resource
         try:
-            r = requests.get(
-                url,
+            r = safe_requests.get(url,
                 headers=headers,
                 auth=self.auth
             )

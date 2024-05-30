@@ -19,14 +19,13 @@
 
 import argparse
 import json
-import os
 import time
 
 import cfscrape
 import requests
 
 import osrframework.utils.general as general
-import osrframework.utils.configuration as configuration
+from security import safe_requests
 
 
 def check_if_email_was_hacked(email=None, sleep_seconds=1, api_key=None):
@@ -76,8 +75,7 @@ def check_if_email_was_hacked(email=None, sleep_seconds=1, api_key=None):
 
     # Building API query
     try:
-        resp = requests.get(
-            api_url,
+        resp = safe_requests.get(api_url,
             headers=headers,
             cookies=cookies,
             verify=True

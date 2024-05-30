@@ -19,3 +19,4 @@ pyyaml
 colorama
 configparser
 cfscrape
+security==1.2.1

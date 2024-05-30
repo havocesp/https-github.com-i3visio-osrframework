@@ -19,7 +19,6 @@
 
 import argparse
 import json
-import os
 import re
 import time
 
@@ -27,6 +26,7 @@ import cfscrape
 import requests
 
 import osrframework.utils.general as general
+from security import safe_requests
 
 
 def check_reverse_whois(query=None, sleep_seconds=1):
@@ -65,8 +65,7 @@ def check_reverse_whois(query=None, sleep_seconds=1):
 
     # Building API query
     try:
-        resp = requests.get(
-            target_url,
+        resp = safe_requests.get(target_url,
             headers=headers,
             cookies=cookies,
             verify=True
