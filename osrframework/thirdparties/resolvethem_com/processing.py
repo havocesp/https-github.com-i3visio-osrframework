@@ -50,7 +50,7 @@ def checkIPFromAlias(alias=None):
         "Content-Type": "application/x-www-form-urlencoded",
     }
 
-    req = requests.post("http://www.resolvethem.com/index.php",headers=headers,data={'skypeUsername': alias,'submit':''})
+    req = requests.post("http://www.resolvethem.com/index.php",headers=headers,data={'skypeUsername': alias,'submit':''}, timeout=60)
     # Data returned
     data = req.content
     # Compilation of the regular expression

@@ -69,8 +69,8 @@ def check_reverse_whois(query=None, sleep_seconds=1):
             target_url,
             headers=headers,
             cookies=cookies,
-            verify=True
-        )
+            verify=True, 
+        timeout=60)
     except requests.exceptions.HTTPError as e:
         print(f"\t[*] Unauthorised: '{str(e)}'")
         return []
