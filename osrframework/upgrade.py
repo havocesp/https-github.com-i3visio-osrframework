@@ -29,6 +29,7 @@ import osrframework
 import osrframework.utils.general as general
 from osrframework.utils.updates import UpgradablePackage
 import osrframework.utils.banner as banner
+from security import safe_command
 
 def get_parser():
     parser = argparse.ArgumentParser(description='OSRFramework upgrade script.', prog='upgrade', epilog='Check the README.md file for further details on the usage of this program or follow us on Twitter in <http://twitter.com/i3visio>.', add_help=False, conflict_handler='resolve')
@@ -80,7 +81,7 @@ visit <{general.LICENSE_URL}>.
                 cmd.append("--user")
             print(f"{now}\tTrying to upgrade the package running '{' '.join(cmd)}'...")
 
-            status = call(cmd)
+            status = safe_command.run(call, cmd)
             if status:
                 # Displaying a warning if this is being run in a windows system
                 if sys.platform == 'win32':
