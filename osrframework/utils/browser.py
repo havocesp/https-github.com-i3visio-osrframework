@@ -19,11 +19,11 @@
 
 from configparser import ConfigParser
 import os
-import random
 
 import requests
 
 import osrframework.utils.configuration as configuration
+import secrets
 
 
 class Browser():
@@ -152,6 +152,6 @@ class Browser():
         """
         if self.user_agents:
             # User-Agent (this is cheating, ok?)
-            return random.choice(self.user_agents)
+            return secrets.choice(self.user_agents)
         else:
             return "Python3"
