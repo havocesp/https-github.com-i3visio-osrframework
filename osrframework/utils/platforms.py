@@ -18,13 +18,13 @@
 ################################################################################
 
 import json
-import random
 import re
 import urllib
 
 import osrframework.utils.browser as browser
 import osrframework.utils.general as general
 from osrframework.utils.exceptions import *
+import secrets
 
 
 class Platform(object):
@@ -219,7 +219,7 @@ class Platform(object):
         try:
             if len(self.creds) > 0:
                 # TODO: in choosing a cred there is an uneeded nesting of arrays
-                c = random.choice(self.creds)[0]
+                c = secrets.choice(self.creds)[0]
                 # adding the credential
                 browser.setNewPassword(c.user, c.password)
                 return True
