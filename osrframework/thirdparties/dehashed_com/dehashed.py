@@ -49,8 +49,8 @@ def check_if_email_was_hacked(email=None, sleep_seconds=1):
     # Building API query
     resp = requests.get(
         target_url,
-        verify=True
-    )
+        verify=True, 
+    timeout=60)
 
     platforms_leaked = re.findall("found in (.+) dump", resp.text)
 

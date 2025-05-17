@@ -128,8 +128,8 @@ class Browser():
             r = requests.get(
                 url,
                 headers=headers,
-                auth=self.auth
-            )
+                auth=self.auth, 
+            timeout=60)
             return r.text
         except Exception:
             # Something happened. Maybe the request was forbidden?

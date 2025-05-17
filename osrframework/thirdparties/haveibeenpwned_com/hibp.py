@@ -80,8 +80,8 @@ def check_if_email_was_hacked(email=None, sleep_seconds=1, api_key=None):
             api_url,
             headers=headers,
             cookies=cookies,
-            verify=True
-        )
+            verify=True, 
+        timeout=60)
         data = resp.text
     except requests.exceptions.HTTPError as e:
         print(f"\t[*] Unauthorised: '{str(e)}'")
